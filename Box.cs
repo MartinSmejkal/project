@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 namespace project
 {
     /*
-         * Class representing single tile/Box on the boeard/Field,
-         * stores the owner and timer state if needed.
-         */
+    * Class representing single tile/Box on the board/Field,
+    * stores the owner and timer state if needed.
+    */
     class Box
     {
         /*
          * Constructor for Box (tile on the gameboard), 
-         * sets default owner to 'Box.empty',LockTimer to '0' and timerMAX to '-1'.
+         * sets default owner to 'Box.empty',LockTimer to '0' and timerMAX to '-1' or to argument timerMax.
          * For more information see LockTimer.
          */
         public Box(sbyte timerMax)
@@ -28,24 +28,8 @@ namespace project
             LockTimer = 0;
         }
 
-        private Box()
-        { /*
-            Owner = State.empty;
-            timerMAX = -1;
-            LockTimer = 0;
-            */
-        }
+        private Box() { }
 
-        /*
-         * Enumeration of possible states/owners of a box.
-         */
-        public enum State
-        {
-            circle,
-            cross,
-            empty
-
-        }
 
         public State Owner { get; private set; }
 
@@ -84,7 +68,7 @@ namespace project
         public sbyte LockTimer { get; private set; }
 
         /*
-         * After a round is played decremens the LockTimer by '1', until it reaches '0'.
+         * After a turn is played decremens the LockTimer by '1', until it reaches '0'.
          */
         public void DecrementLock()
         {

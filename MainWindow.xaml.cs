@@ -16,7 +16,7 @@ namespace project
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Field field = new Field(5, "player1", "player2");
+        private Field field = new Field("player1", "player2", fieldSize: 5, winCondition: 4, timerMax: 1);
         public MainWindow()
         {
 
@@ -26,10 +26,10 @@ namespace project
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Button b = (sender as Button);
+            Button b = ((Button)sender);
             int column = Grid.GetColumn(b);
             int row = Grid.GetRow(b);
-            b.Content = field.PlayRound(row, column);
+            b.Content = field.PlayTurn(row, column);
             if (field.CheckWin(row, column))
             {
                 //temp
