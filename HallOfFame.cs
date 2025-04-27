@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace project
 {
+    /*
+     * Class providing utilities above stored Games,
+     * such as filtering, storing and loading from files
+     */
     class HallOfFame
     {
 
@@ -17,6 +21,10 @@ namespace project
 
         private List<Game> games;
 
+        /*
+         * Method that goes through all stored games and returns HashSet<string>
+         * containing all unique player names.
+         */
         public HashSet<string> GetNames()
         {
             HashSet<string> names = new HashSet<string>();
@@ -28,6 +36,10 @@ namespace project
             return names;
         }
 
+        /*
+         * Method returning Dictionary<string, ushort> containing 
+         * pair of player name and games won, ordered by games won (descending)
+         */
         public Dictionary<string, ushort> GetTopPlayers()
         {
             Dictionary<string, ushort> top = new Dictionary<string, ushort>();

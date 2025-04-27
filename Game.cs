@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace project
 {
+    /*
+     * Class storing the results of played games (exported from class Field),
+     * the class itself does nothing, for processing see HallOfFame. 
+     */
     class Game
     {
         public Game(string playerCross, string playerCircle, State winner, ushort turnCounter, byte winCondition, byte fieldsize) 
