@@ -11,7 +11,7 @@ namespace project
      * contains information about the game state (players, Boxes, settings)
      * and methods to evaluete player actions.
      */
-    class Field
+    public class Field
     {
 #pragma warning disable CS8618 
         private Field() { }

@@ -10,7 +10,7 @@ namespace project
     * Class representing single tile/Box on the board/Field,
     * stores the owner and timer state if needed.
     */
-    class Box
+    public class Box
     {
         /*
          * Constructor for Box (tile on the gameboard), 

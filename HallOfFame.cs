@@ -11,7 +11,7 @@ namespace project
      * Class providing utilities above stored Games,
      * such as filtering, storing and loading from files
      */
-    class HallOfFame
+    public class HallOfFame
     {
 
         public HallOfFame() 
@@ -59,6 +59,14 @@ namespace project
             }
             
             return (Dictionary<string, ushort>)top.OrderByDescending(top => top.Value);
+        }
+
+        /*
+         * Method adding the results of new Game to the list of played games.
+         */
+        public void AddGame(Game game) 
+        {
+            games.Add(game);
         }
 
         private void LoadGames() { }
