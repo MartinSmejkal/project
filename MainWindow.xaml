@@ -4,9 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:project"
+        xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid x:Name="FieldGrid">
+    <Grid>
+        <Button Content="Play" Click="Button_Click" HorizontalAlignment="Left" Margin="385,257,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="player1" HorizontalAlignment="Left" Margin="115,183,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="player2"  HorizontalAlignment="Left" Margin="400,183,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <wpfTool:ByteUpDown Name="size" Watermark="Size of gameboeard" UpdateValueOnEnterKey="True"  Margin="21,88,540,299" Minimum="3" DefaultValue="3"/>
+        <wpfTool:ByteUpDown Name="condition" Watermark="Winning condition" UpdateValueOnEnterKey="True" Margin="280,88,280,299" Minimum="3" DefaultValue="3"/>
+        <wpfTool:SByteUpDown Name="timer" Watermark="Number of rounds for overwrite" UpdateValueOnEnterKey="True" Margin="551,88,10,299" Minimum="-1" DefaultValue="-1"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="235,183,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.022,-0.559" Height="18" Width="110"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="520,183,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.022,-0.559" Height="18" Width="110"/>
+
 
     </Grid>
 </Window>

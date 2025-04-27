@@ -1,0 +1,1 @@
+﻿Extended WPF Toolkit		https://github.com/xceedsoftware/wpftoolkit/
