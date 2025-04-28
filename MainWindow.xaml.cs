@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Collections.ObjectModel;
+using System.Reflection;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,12 +20,19 @@ namespace project
     /// </summary>
     public partial class MainWindow : Window
     {
-        private HallOfFame hallOfFame = new HallOfFame();
+        private HallOfFame hallOfFame;
+        public Dictionary<string, ushort> TopPlayers
+        {
+            get { return hallOfFame.GetTopPlayers(); }
+        }
 
         public MainWindow()
         {
-
+            hallOfFame = new HallOfFame();
             InitializeComponent();
+
+            this.DataContext = this;
+            this.IsVisibleChanged += MainWindow_IsVisibleChanged;
 
         }
 
@@ -34,6 +43,24 @@ namespace project
             this.Hide();
             window.Show();
         }
+
+        private void MainWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if ((bool)e.NewValue)
+            {
+                RefreshData();
+            }
+        }
+
+
+        private void RefreshData()
+        {
+            HOF.ItemsSource = null;
+            var x = TopPlayers.ToList();
+            HOF.ItemsSource = TopPlayers.ToList();
+            HOF.Items.Refresh();
+        }
+
 
     }
 

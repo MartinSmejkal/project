@@ -12,7 +12,7 @@ namespace project
      */
     public class Game
     {
-        public Game(string playerCross, string playerCircle, State winner, ushort turnCounter, byte winCondition, byte fieldsize) 
+        public Game(string playerCross, string playerCircle, State winner, ushort turnCounter, byte winCondition, byte fieldsize)
         {
             PlayerCross = playerCross;
             PlayerCircle = playerCircle;

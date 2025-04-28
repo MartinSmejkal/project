@@ -14,7 +14,7 @@ namespace project
     public class HallOfFame
     {
 
-        public HallOfFame() 
+        public HallOfFame()
         {
             games = new List<Game>();
         }
@@ -43,28 +43,29 @@ namespace project
         public Dictionary<string, ushort> GetTopPlayers()
         {
             Dictionary<string, ushort> top = new Dictionary<string, ushort>();
-            foreach (string name in GetNames()) 
+            foreach (string name in GetNames())
             {
                 top.Add(name, 0);
             }
             foreach (Game game in games)
             {
-                if (game.Winner == State.circle) 
+                if (game.Winner == State.circle)
                 {
                     top[game.PlayerCircle]++;
-                }else if (game.Winner == State.cross)
+                }
+                else if (game.Winner == State.cross)
                 {
                     top[game.PlayerCross]++;
                 }
             }
-            
-            return (Dictionary<string, ushort>)top.OrderByDescending(top => top.Value);
+
+            return top.OrderByDescending(top => top.Value).ToDictionary();
         }
 
         /*
          * Method adding the results of new Game to the list of played games.
          */
-        public void AddGame(Game game) 
+        public void AddGame(Game game)
         {
             games.Add(game);
         }

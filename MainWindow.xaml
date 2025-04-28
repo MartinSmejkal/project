@@ -8,15 +8,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Play" Click="Button_Click" HorizontalAlignment="Left" Margin="385,257,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="player1" HorizontalAlignment="Left" Margin="115,183,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="player2"  HorizontalAlignment="Left" Margin="400,183,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <wpfTool:ByteUpDown Name="size" Watermark="Size of gameboeard" UpdateValueOnEnterKey="True"  Margin="21,88,540,299" Minimum="3" DefaultValue="3"/>
-        <wpfTool:ByteUpDown Name="condition" Watermark="Winning condition" UpdateValueOnEnterKey="True" Margin="280,88,280,299" Minimum="3" DefaultValue="3"/>
-        <wpfTool:SByteUpDown Name="timer" Watermark="Number of rounds for overwrite" UpdateValueOnEnterKey="True" Margin="551,88,10,299" Minimum="-1" DefaultValue="-1"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="235,183,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.022,-0.559" Height="18" Width="110"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="520,183,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.022,-0.559" Height="18" Width="110"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Play" Click="Button_Click" HorizontalAlignment="Left" Margin="128,322,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="player1" HorizontalAlignment="Left" Margin="20,228,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="player2"  HorizontalAlignment="Left" Margin="20,267,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <wpfTool:ByteUpDown Name="size" Watermark="Size of gameboeard" UpdateValueOnEnterKey="True"  Margin="20,22,241,365" Minimum="3" DefaultValue="3"/>
+        <wpfTool:ByteUpDown Name="condition" Watermark="Winning condition" UpdateValueOnEnterKey="True" Margin="19,88,241,299" Minimum="3" DefaultValue="3"/>
+        <wpfTool:SByteUpDown Name="timer" Watermark="Number of rounds for overwrite" UpdateValueOnEnterKey="True" Margin="20,154,241,233" Minimum="-1" DefaultValue="-1"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="140,228,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.022,-0.559" Height="18" Width="110"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="140,267,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.022,-0.559" Height="18" Width="110"/>
 
+        <DataGrid Name="HOF" CanUserAddRows="False" CanUserResizeColumns="False" CanUserSortColumns="True" IsReadOnly="True" Grid.Column="1" Margin="0,4,0,-4" AutoGenerateColumns="True" />
 
     </Grid>
 </Window>
