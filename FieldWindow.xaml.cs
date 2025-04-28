@@ -35,7 +35,6 @@ namespace project
             b.Content = field.PlayTurn(row, column);
             if (field.CheckWin(row, column))
             {
-                //temp
                 foreach (UIElement button in FieldGrid.Children)
                 {
 
@@ -43,12 +42,20 @@ namespace project
                 }
                 //TODO show pop-up window with the winner
                 Window main = this.Owner;
-                ExportGameDialog dialog = new ExportGameDialog();
-                bool? result = dialog.ShowDialog();
-                if (result == true)
+                ExportGameDialog export = new ExportGameDialog();
+                bool? result_exp = export.ShowDialog();
+                if (result_exp == true)
                 {
                     Game game = field.ExportGame();
                     hallOfFame.AddGame(game);
+                }
+                RematchGameDialog rematch = new RematchGameDialog();
+                bool? result_rem = rematch.ShowDialog();
+                if (result_rem == true)
+                {
+                    AdjustRowDefinitions(field.FieldSize);
+                    field = new Field(field.PlayerCircle, field.PlayerCross, fieldSize: field.FieldSize, winCondition: field.WinCondition, timerMax: field.TurnLockTimer);
+                    return;
                 }
                 this.Close();
                 main.Show();

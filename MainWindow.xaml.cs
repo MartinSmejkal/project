@@ -59,6 +59,7 @@ namespace project
             var x = TopPlayers.ToList();
             HOF.ItemsSource = TopPlayers.ToList();
             HOF.Items.Refresh();
+
         }
 
 

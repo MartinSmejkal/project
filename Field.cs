@@ -51,6 +51,7 @@ namespace project
             PlayerCross = player1;
             PlayerCircle = player2;
             TurnCounter = 0;
+            TurnLockTimer = timerMax;
 
 
             FieldSize = fieldSize;
@@ -95,6 +96,12 @@ namespace project
          * Size of the game field, minimum is 3.
          */
         public byte FieldSize { get; private set; }
+        /*
+         * Number of turns the Box.LockTimer will be set.
+         * TurnTimerMax '-1' means overwriting the Box owner is disabled,
+         * otherwise number of turns before Box.Owner can be overwritten.
+         */
+        public sbyte TurnLockTimer { get; private set; }
 
         /*
          * Method that schould be called after round was played,

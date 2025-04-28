@@ -17,22 +17,21 @@ namespace project
     /// <summary>
     /// Interakční logika pro ExportGameDialog.xaml
     /// </summary>
-    public partial class ExportGameDialog : Window
+    public partial class RematchGameDialog : Window
     {
-        public ExportGameDialog()
+        public RematchGameDialog()
         {
             InitializeComponent();
         }
 
-        private void ExportButton_Click(object sender, RoutedEventArgs e)
+        private void RematchButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void ReturnButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
         }
-
     }
 }
