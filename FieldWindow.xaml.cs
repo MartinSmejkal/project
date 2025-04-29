@@ -48,6 +48,9 @@ namespace project
                 {
                     Game game = field.ExportGame();
                     hallOfFame.AddGame(game);
+                    string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+                    string FileName = string.Format("{0}Resources\\SavedGames.txt", System.IO.Path.GetFullPath(System.IO.Path.Combine(RunningPath, @"..\..\..\")));
+                    hallOfFame.SaveGames(FileName);
                 }
                 RematchGameDialog rematch = new RematchGameDialog();
                 bool? result_rem = rematch.ShowDialog();

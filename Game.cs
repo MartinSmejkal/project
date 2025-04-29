@@ -21,19 +21,16 @@ namespace project
             WinCondition = winCondition;
             FieldSize = fieldsize;
         }
+        public Game() { }
+        public string PlayerCross { get;  set; }
 
-#pragma warning disable CS8618
-        private Game() { }
-#pragma warning restore CS8618
-        public string PlayerCross { get; private set; }
+        public string PlayerCircle { get;  set; }
 
-        public string PlayerCircle { get; private set; }
+        public State Winner { get;  set; }
 
-        public State Winner { get; private set; }
+        public ushort TurnCounter { get;  set; }
 
-        public ushort TurnCounter { get; private set; }
-
-        public byte WinCondition { get; private set; }
-        public byte FieldSize { get; private set; }
+        public byte WinCondition { get;  set; }
+        public byte FieldSize { get;  set; }
     }
 }

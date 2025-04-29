@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfGame xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Game>
+    <PlayerCross>TextBox1</PlayerCross>
+    <PlayerCircle>TextBox2</PlayerCircle>
+    <Winner>cross</Winner>
+    <TurnCounter>5</TurnCounter>
+    <WinCondition>3</WinCondition>
+    <FieldSize>3</FieldSize>
+  </Game>
+  <Game>
+    <PlayerCross>TextBox1</PlayerCross>
+    <PlayerCircle>TextBox3</PlayerCircle>
+    <Winner>cross</Winner>
+    <TurnCounter>5</TurnCounter>
+    <WinCondition>3</WinCondition>
+    <FieldSize>3</FieldSize>
+  </Game>
+</ArrayOfGame>

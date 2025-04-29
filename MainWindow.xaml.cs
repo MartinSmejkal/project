@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.IO;
+using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Text;
 using System.Windows;
@@ -28,7 +29,11 @@ namespace project
 
         public MainWindow()
         {
+            System.Resources.ResourceManager RM = new System.Resources.ResourceManager("YourApplicationNameSpace.Properties.Resources", typeof(Resources).Assembly);
             hallOfFame = new HallOfFame();
+            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+            string FileName = string.Format("{0}Resources\\SavedGames.txt", System.IO.Path.GetFullPath(System.IO.Path.Combine(RunningPath, @"..\..\..\")));
+            hallOfFame.LoadGames(FileName);
             InitializeComponent();
 
             this.DataContext = this;

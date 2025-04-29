@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace project
 {
@@ -70,8 +71,29 @@ namespace project
             games.Add(game);
         }
 
-        private void LoadGames() { }
-        private void SaveGames() { }
+        public void LoadGames(string filepath)
+        {
+            if (File.Exists(filepath))
+            {
+                try
+                {
+                    games = XmlSerialization.ReadFromXmlFile<List<Game>>(filepath);
+                }
+                catch (InvalidOperationException e)
+                {
+                    games = new List<Game>();
+                    //corruted file
+                }
+            }
+            else
+            {
+                games = new List<Game>();
+            }
+        }
+        public void SaveGames(string filepath)
+        {
+            XmlSerialization.WriteToXmlFile<List<Game>>(filepath, games);
+        }
 
 
 

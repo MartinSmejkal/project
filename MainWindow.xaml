@@ -21,7 +21,10 @@
         <Button Content="Button" HorizontalAlignment="Left" Margin="140,228,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.022,-0.559" Height="18" Width="110"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="140,267,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.022,-0.559" Height="18" Width="110"/>
 
-        <DataGrid Name="HOF" CanUserAddRows="False" CanUserResizeColumns="False" CanUserSortColumns="True" IsReadOnly="True" Grid.Column="1" Margin="0,4,0,-4" AutoGenerateColumns="True" />
+        <DataGrid Name="HOF" CanUserAddRows="False" CanUserResizeColumns="False" CanUserSortColumns="True" IsReadOnly="True" Grid.Column="1" Margin="0,4,0,-4" AutoGenerateColumns="True"
+                  ScrollViewer.CanContentScroll="True" 
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
 
     </Grid>
 </Window>
