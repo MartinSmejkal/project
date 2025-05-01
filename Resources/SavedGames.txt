@@ -16,4 +16,20 @@
     <WinCondition>3</WinCondition>
     <FieldSize>3</FieldSize>
   </Game>
+  <Game>
+    <PlayerCross>TextBox</PlayerCross>
+    <PlayerCircle>TextBox</PlayerCircle>
+    <Winner>cross</Winner>
+    <TurnCounter>7</TurnCounter>
+    <WinCondition>3</WinCondition>
+    <FieldSize>9</FieldSize>
+  </Game>
+  <Game>
+    <PlayerCross>TextBox2</PlayerCross>
+    <PlayerCircle>TextBox</PlayerCircle>
+    <Winner>cross</Winner>
+    <TurnCounter>7</TurnCounter>
+    <WinCondition>3</WinCondition>
+    <FieldSize>9</FieldSize>
+  </Game>
 </ArrayOfGame>
