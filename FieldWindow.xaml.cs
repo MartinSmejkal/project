@@ -42,17 +42,7 @@ namespace project
                 }
                 //TODO show pop-up window with the winner
                 Window main = this.Owner;
-                ExportGameDialog export = new ExportGameDialog();
-                bool? result_exp = export.ShowDialog();
-                if (result_exp == true)
-                {
-                    Game game = field.ExportGame();
-                    hallOfFame.AddGame(game);
-                    string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
-                    string FileName = string.Format("{0}Resources\\SavedGames.txt", System.IO.Path.GetFullPath(System.IO.Path.Combine(RunningPath, @"..\..\..\")));
-                    hallOfFame.SaveGames(FileName);
-                }
-                RematchGameDialog rematch = new RematchGameDialog();
+                RematchGameDialog rematch = new RematchGameDialog(field, hallOfFame);
                 bool? result_rem = rematch.ShowDialog();
                 if (result_rem == true)
                 {

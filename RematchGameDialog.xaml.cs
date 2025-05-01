@@ -19,8 +19,12 @@ namespace project
     /// </summary>
     public partial class RematchGameDialog : Window
     {
-        public RematchGameDialog()
+        private Field Field;
+        private HallOfFame HallOfFame;
+        public RematchGameDialog(Field field, HallOfFame hof)
         {
+            Field = field;
+            HallOfFame = hof;
             InitializeComponent();
         }
 
@@ -32,6 +36,16 @@ namespace project
         private void ReturnButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
+        }
+
+        private void ExportButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = ((Button)sender);
+            Game game = Field.ExportGame();
+            HallOfFame.AddGame(game);
+            HallOfFame.SaveGames(HallOfFame.GetResourcesFilePath());
+            b.IsEnabled = false;
+
         }
     }
 }

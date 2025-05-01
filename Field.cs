@@ -108,7 +108,8 @@ namespace project
          * uses 4 private methods to check all 8 directions,
          * params row & column are forwarded to them,
          * return true if any of them find that WinCondition was met,
-         * if so calls SwitchOnTurn().
+         * if so calls SwitchOnTurn(),
+         * follows CheckDraw().
          */
         public bool CheckWin(int row, int column)
         {
@@ -135,8 +136,7 @@ namespace project
                 SwitchOnTurn();
                 return true;
             }
-
-            return false;
+            return CheckDraw();
         }
 
         /*
@@ -325,6 +325,35 @@ namespace project
             return false;
         }
 
+        /*
+         * Method that checks for draw condition,
+         * if overwriting is enabled (any form) returns false,
+         * if overwritng of Box owner is disabled and all Boxes have
+         * their owners set -> returns true, ohterwise returns false,
+         * if game is found to be draw, OnTurn is set to Statee.empty.
+         */
+        private bool CheckDraw()
+        {
+            if (TurnLockTimer < 0)
+            {
+                for (int i = 0; i < FieldSize; i++)
+                {
+                    for (int j = 0; j < FieldSize; j++)
+                    {
+                        if (GameField[i, j].Owner == State.empty)
+                        {
+                            return false;
+                        }
+                    }
+                }
+                OnTurn = State.empty;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         /*
          * Method that serves the game logic,
          * increments TurnCounter, calls DecrementLocks() and calls SetOwner() for player OnTurn

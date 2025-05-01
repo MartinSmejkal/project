@@ -43,6 +43,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="rematchButton" Click="RematchButton_Click"  IsDefault="True">Rematch</Button>
             <Button Name="returnButton" Click="ReturnButton_Click" IsCancel="True">Return</Button>
+            <Button Name="exportButton" Click="ExportButton_Click">Export</Button>
         </StackPanel>
     </Grid >
 </Window>

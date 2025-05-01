@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Controls.Primitives;
 
 namespace project
 {
@@ -59,8 +60,9 @@ namespace project
                     top[game.PlayerCross]++;
                 }
             }
-
-            return top.OrderByDescending(top => top.Value).ToDictionary();
+            top = top.OrderByDescending(top => top.Value).ToDictionary();
+            //top = top.Take(10).ToDictionary(); just in case it is really needed to display only first 10 
+            return top;
         }
 
         /*
@@ -71,6 +73,12 @@ namespace project
             games.Add(game);
         }
 
+        public static string GetResourcesFilePath()
+        {
+            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+            string FileName = string.Format("{0}Resources\\SavedGames.txt", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\..\")));
+            return FileName;
+        }
         public void LoadGames(string filepath)
         {
             if (File.Exists(filepath))
@@ -82,7 +90,7 @@ namespace project
                 catch (InvalidOperationException e)
                 {
                     games = new List<Game>();
-                    //corruted file
+                    //corrupted file
                 }
             }
             else
