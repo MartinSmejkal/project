@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Text;
 using System.Windows;
@@ -31,9 +30,8 @@ namespace project
         {
             System.Resources.ResourceManager RM = new System.Resources.ResourceManager("YourApplicationNameSpace.Properties.Resources", typeof(Resources).Assembly);
             hallOfFame = new HallOfFame();
-            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
-            string FileName = string.Format("{0}Resources\\SavedGames.txt", System.IO.Path.GetFullPath(System.IO.Path.Combine(RunningPath, @"..\..\..\")));
-            hallOfFame.LoadGames(FileName);
+            
+            hallOfFame.LoadGames(HallOfFame.GetResourcesFilePath());
             InitializeComponent();
 
             this.DataContext = this;
@@ -47,6 +45,19 @@ namespace project
             window.Owner = this;
             this.Hide();
             window.Show();
+        }
+
+        private void Player1_Click(object sender, RoutedEventArgs e) 
+        {
+            NameSelectDialog select = new NameSelectDialog(hallOfFame.GetNames(), player1);
+            select.Title = "First player name selection";
+            select.ShowDialog();
+        }
+        private void Player2_Click(object sender, RoutedEventArgs e)
+        {
+            NameSelectDialog select = new NameSelectDialog(hallOfFame.GetNames(), player2);
+            select.Title = "Second player name selection";
+            select.ShowDialog();
         }
 
         private void MainWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)

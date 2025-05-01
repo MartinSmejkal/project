@@ -6,7 +6,17 @@
         xmlns:local="clr-namespace:project"
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
-    <Grid x:Name="FieldGrid">
-
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="FieldGrid" Grid.Column="1" Grid.Row="1">
+        </Grid>
     </Grid>
 </Window>
