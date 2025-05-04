@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Cryptography.Pkcs;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -25,6 +26,7 @@ namespace project
             AdjustRowDefinitions(fieldSize);
             field = new Field(p1, p2, fieldSize: fieldSize, winCondition: winCondition, timerMax: timerMax);
             hallOfFame = hof;
+            TurnLabel.Content = p1;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -33,6 +35,7 @@ namespace project
             int column = Grid.GetColumn(b);
             int row = Grid.GetRow(b);
             b.Content = field.PlayTurn(row, column);
+            TurnLabel.Content = field.OnTurn == State.cross ? field.PlayerCross : field.PlayerCircle;
             if (field.CheckWin(row, column))
             {
                 foreach (UIElement button in FieldGrid.Children)

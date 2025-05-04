@@ -379,7 +379,7 @@ namespace project
                 GameField[row, column].SetOwner(State.circle);
                 c = 'O';
                 OnTurn = State.cross;
-            }
+            }       
             TurnCounter++;
             DecrementLocks();
             return c;
