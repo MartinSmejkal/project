@@ -55,6 +55,7 @@ namespace project
                     field = new Field(field.PlayerCircle, field.PlayerCross, fieldSize: field.FieldSize, winCondition: field.WinCondition, timerMax: field.TurnLockTimer);
                     return;
                 }
+                Closing -= OnWindowClosing;
                 this.Close();
                 main.Show();
                 return;
