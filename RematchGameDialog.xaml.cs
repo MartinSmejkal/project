@@ -26,6 +26,8 @@ namespace project
             Field = field;
             HallOfFame = hof;
             InitializeComponent();
+            Game game = Field.ExportGame();
+            winningPlayer.Content = game.WinnerPlayer;
         }
 
         private void RematchButton_Click(object sender, RoutedEventArgs e)

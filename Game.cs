@@ -12,11 +12,12 @@ namespace project
      */
     public class Game
     {
-        public Game(string playerCross, string playerCircle, State winner, ushort turnCounter, byte winCondition, byte fieldsize)
+        public Game(string playerCross, string playerCircle, State winner, ushort turnCounter, byte winCondition, byte fieldsize, string winnerPlayer)
         {
             PlayerCross = playerCross;
             PlayerCircle = playerCircle;
             Winner = winner;
+            WinnerPlayer = winnerPlayer; 
             TurnCounter = turnCounter;
             WinCondition = winCondition;
             FieldSize = fieldsize;
@@ -27,6 +28,8 @@ namespace project
         public string PlayerCircle { get;  set; }
 
         public State Winner { get;  set; }
+
+        public string WinnerPlayer { get; set; }
 
         public ushort TurnCounter { get;  set; }
 

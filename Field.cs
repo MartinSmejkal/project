@@ -442,7 +442,8 @@ namespace project
          */
         public Game ExportGame()
         {
-            return new Game(PlayerCross, PlayerCircle, OnTurn, TurnCounter, WinCondition, FieldSize);
+            string winner = this.OnTurn == State.cross ? this.PlayerCross : this.PlayerCircle;
+            return new Game(PlayerCross, PlayerCircle, OnTurn, TurnCounter, WinCondition, FieldSize, winner);
         }
 
     }

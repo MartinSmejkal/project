@@ -3,10 +3,10 @@ Zadání semestrálního projektu BPC-OOP è. 25
 Vytvoøte GUI aplikaci piškvorky. 
 
 Pokud bude vyhodnocena výhra, bude vítìzný hráè oznaèen a vyhodnocen poèet tahù nutných k výhøe.  //give player feedback
-	->invisible lable that switches after game has been won
+	->invisible lable that switches after game has been won // label now shows the winner player
 
 Následnì hráèi vyberou velikost hracího pole a náhodnì bude zvolen zaèínající hráè. //randomly select , but give users clue who is who
-	->sufficient just info in FieldWindow
+	->sufficient just info in FieldWindow // Added label showing active player
 
 Zadávání znakù bude probíhat pomocí kliknutí myši do hracího pole. //partially done (replace char with something better, maybe picture?)
 

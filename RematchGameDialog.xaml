@@ -33,17 +33,12 @@
 
         </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
 
 
         <!-- Accept or Cancel -->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Name="rematchButton" Click="RematchButton_Click"  IsDefault="True">Rematch</Button>
-            <Button Name="returnButton" Click="ReturnButton_Click" IsCancel="True">Return</Button>
-            <Button Name="exportButton" Click="ExportButton_Click">Export</Button>
-        </StackPanel>
+        <Button x:Name="rematchButton" Click="RematchButton_Click"  IsDefault="True" Content="Rematch" Margin="10,70,118,69"/>
+        <Button x:Name="returnButton" Click="ReturnButton_Click" IsCancel="True" Content="Return" Margin="105,70,23,69"/>
+        <Button x:Name="exportButton" Click="ExportButton_Click" Content="Export" Margin="200,70,-72,69"/>
+        <Label x:Name="winningPlayer" Content="Label" HorizontalAlignment="Left" Margin="114,24,0,0" VerticalAlignment="Top" Width="68"/>
     </Grid >
 </Window>
