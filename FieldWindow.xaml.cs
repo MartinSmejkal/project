@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.Pkcs;
+﻿using System.ComponentModel;
+using System.Security.Cryptography.Pkcs;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,6 +28,7 @@ namespace project
             field = new Field(p1, p2, fieldSize: fieldSize, winCondition: winCondition, timerMax: timerMax);
             hallOfFame = hof;
             TurnLabel.Content = p1;
+            Closing += OnWindowClosing;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -74,6 +76,12 @@ namespace project
             }
 
 
+        }
+
+        public void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            Window main = this.Owner;
+            main.Close();
         }
 
         private void AdjustRowDefinitions(int fieldSize)
