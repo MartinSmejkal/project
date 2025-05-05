@@ -20,9 +20,10 @@ namespace project
     {
         private Field field;
         private HallOfFame hallOfFame;
+        private BitmapImage circle;
+        private BitmapImage cross;
         public FieldWindow(string p1, string p2, byte fieldSize, byte winCondition, sbyte timerMax, HallOfFame hof)
         {
-
             InitializeComponent();
             AdjustRowDefinitions(fieldSize);
             field = new Field(p1, p2, fieldSize: fieldSize, winCondition: winCondition, timerMax: timerMax);
@@ -30,6 +31,9 @@ namespace project
             PlayerLabel.Content = p1;
             TurnLabel.Content = 0;
             Closing += OnWindowClosing;
+            circle = new BitmapImage(new Uri("pack://application:,,,/Resources/circle.png"));
+            cross = new BitmapImage(new Uri("pack://application:,,,/Resources/cross.png"));
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -37,7 +41,7 @@ namespace project
             Button b = ((Button)sender);
             int column = Grid.GetColumn(b);
             int row = Grid.GetRow(b);
-            b.Content = field.PlayTurn(row, column);
+            b.Content = field.PlayTurn(row, column) == State.cross ? new Image { Source = cross } : new Image { Source = circle };
             PlayerLabel.Content = field.OnTurn == State.cross ? field.PlayerCross : field.PlayerCircle;
             TurnLabel.Content = field.TurnCounter;
             if (field.CheckWin(row, column))

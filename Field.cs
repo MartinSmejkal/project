@@ -358,31 +358,31 @@ namespace project
          * Method that serves the game logic,
          * increments TurnCounter, calls DecrementLocks() and calls SetOwner() for player OnTurn
          * on the Box on coordinates given throught params row & column,
-         * returns char symbolising the player, who was On Turn, and setes OnTurn for next round.
+         * returns State symbolising the player, who was On Turn, and setes OnTurn for next round.
          * 
          * In sequnce: 
          *      sets new owner SetOwner()
          *      increment TurnCounter
          *      decrement LockTimers(),  -> -1 after  both turns , -2 per round
          */
-        public char PlayTurn(int row, int column)
+        public State PlayTurn(int row, int column)
         {
-            char c;
+            State s;
             if (OnTurn == State.cross)
             {
                 GameField[row, column].SetOwner(State.cross);
-                c = 'X';
+                s = State.cross;
                 OnTurn = State.circle;
             }
             else
             {
                 GameField[row, column].SetOwner(State.circle);
-                c = 'O';
+                s = State.circle;
                 OnTurn = State.cross;
             }       
             TurnCounter++;
             DecrementLocks();
-            return c;
+            return s;
 
 
         }
