@@ -29,14 +29,11 @@ namespace project
         public MainWindow()
         {
             System.Resources.ResourceManager RM = new System.Resources.ResourceManager("YourApplicationNameSpace.Properties.Resources", typeof(Resources).Assembly);
-            hallOfFame = new HallOfFame();
-            
+            hallOfFame = new HallOfFame();           
             hallOfFame.LoadGames(HallOfFame.GetResourcesFilePath());
             InitializeComponent();
-
             this.DataContext = this;
             this.IsVisibleChanged += MainWindow_IsVisibleChanged;
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -68,6 +65,17 @@ namespace project
             }
         }
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (player1.Text.Length > 0 && player2.Text.Length > 0 && player1.Text != player2.Text)
+            {
+                play.IsEnabled = true;
+            }
+            else 
+            {
+                play.IsEnabled = false;
+            }
+        }
 
         private void RefreshData()
         {
@@ -75,11 +83,6 @@ namespace project
             var x = TopPlayers.ToList();
             HOF.ItemsSource = TopPlayers.ToList();
             HOF.Items.Refresh();
-
         }
-
-
     }
-
-
 }

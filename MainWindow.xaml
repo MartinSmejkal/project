@@ -6,22 +6,42 @@
         xmlns:local="clr-namespace:project"
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" MinHeight="350" MinWidth="600" MaxWidth="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*" MaxWidth="500"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Play" Click="Button_Click" HorizontalAlignment="Left" Margin="128,322,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="player1" HorizontalAlignment="Left" Margin="20,228,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="player2"  HorizontalAlignment="Left" Margin="20,267,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <wpfTool:ByteUpDown Name="size" Watermark="Size of gameboeard" UpdateValueOnEnterKey="True"  Margin="20,22,241,365" Minimum="3" DefaultValue="3"/>
-        <wpfTool:ByteUpDown Name="condition" Watermark="Winning condition" UpdateValueOnEnterKey="True" Margin="19,88,241,299" Minimum="3" DefaultValue="3"/>
-        <wpfTool:SByteUpDown Name="timer" Watermark="Number of rounds for overwrite" UpdateValueOnEnterKey="True" Margin="20,154,241,233" Minimum="-1" DefaultValue="-1"/>
-        <Button Content="Button" Click="Player1_Click" HorizontalAlignment="Left" Margin="140,228,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.022,-0.559" Height="18" Width="110"/>
-        <Button Content="Button" Click="Player2_Click" HorizontalAlignment="Left" Margin="140,267,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.022,-0.559" Height="18" Width="110"/>
-
-        <DataGrid Name="HOF" CanUserAddRows="False" CanUserResizeColumns="False" CanUserSortColumns="True" IsReadOnly="True" Grid.Column="1" Margin="0,4,0,-4" AutoGenerateColumns="False"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="4*" MaxWidth="400"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="1" Grid.Column="0" Content="Size of gameboeard: "  FontSize="14"  Height="30" Width="Auto"/>
+            <wpfTool:ByteUpDown Name="size" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  Watermark="Default value '3'" UpdateValueOnEnterKey="True"  HorizontalAlignment="Stretch" Margin="20,0,5,0" VerticalAlignment="Center" Height="30" Minimum="3" DefaultValue="3"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Winning condition: "  FontSize="14"  Height="30" Width="Auto"/>
+            <wpfTool:ByteUpDown Name="condition" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Watermark="Default value '3'" UpdateValueOnEnterKey="True" HorizontalAlignment="Stretch" Margin="20,0,5,0" VerticalAlignment="Center"  Height="30" Minimum="3" DefaultValue="3"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Rounds until overwrite: "  FontSize="14"  Height="30" Width="Auto"/>
+            <wpfTool:SByteUpDown Name="timer" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Watermark="Default value -1'" UpdateValueOnEnterKey="True" HorizontalAlignment="Stretch" Margin="20,0,5,0" VerticalAlignment="Center"  Height="30" Minimum="-1" DefaultValue="-1"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="First player name: "  FontSize="14"  Height="30" Width="Auto"/>
+            <Button Content="Select from HOF" Grid.Row="4" Grid.Column="2" Click="Player1_Click" HorizontalAlignment="Stretch" Margin="0,0,5,0" VerticalAlignment="Center" Height="30"/>
+            <TextBox Name="player1" TextChanged="TextBox_TextChanged"  MaxLength="25" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="30" Margin="20,0,0,0" TextWrapping="NoWrap"/>
+            <Label Grid.Row="5" Grid.Column="0" Content="Second player name: "  FontSize="14"  Height="30" Width="Auto"/>
+            <Button Content="Select from HOF" Grid.Row="5" Grid.Column="2" Click="Player2_Click" HorizontalAlignment="Stretch" Margin="0,0,5,0" VerticalAlignment="Center" Height="30"/>
+            <TextBox Name="player2" TextChanged="TextBox_TextChanged"  MaxLength="25" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="30" Margin="20,0,0,0" TextWrapping="NoWrap"/>
+            <Button Name="play" Content="Play" Click="Button_Click" IsEnabled="False" Grid.Row="6" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" MaxWidth="200" Height="30"/>
+        </Grid>
+        <DataGrid Name="HOF" CanUserAddRows="False" CanUserResizeColumns="False" CanUserSortColumns="True" IsReadOnly="True" Grid.Column="1" Margin="5,5,5,5" AutoGenerateColumns="False"
                   ScrollViewer.CanContentScroll="True" 
                     ScrollViewer.VerticalScrollBarVisibility="Auto"
                     ScrollViewer.HorizontalScrollBarVisibility="Auto">
@@ -30,6 +50,5 @@
                 <DataGridTextColumn Header="Games won" Binding="{Binding Value}" Width="1*"/>
             </DataGrid.Columns>
         </DataGrid>
-
     </Grid>
 </Window>

@@ -27,7 +27,8 @@ namespace project
             AdjustRowDefinitions(fieldSize);
             field = new Field(p1, p2, fieldSize: fieldSize, winCondition: winCondition, timerMax: timerMax);
             hallOfFame = hof;
-            TurnLabel.Content = p1;
+            PlayerLabel.Content = p1;
+            TurnLabel.Content = 0;
             Closing += OnWindowClosing;
         }
 
@@ -37,7 +38,8 @@ namespace project
             int column = Grid.GetColumn(b);
             int row = Grid.GetRow(b);
             b.Content = field.PlayTurn(row, column);
-            TurnLabel.Content = field.OnTurn == State.cross ? field.PlayerCross : field.PlayerCircle;
+            PlayerLabel.Content = field.OnTurn == State.cross ? field.PlayerCross : field.PlayerCircle;
+            TurnLabel.Content = field.TurnCounter;
             if (field.CheckWin(row, column))
             {
                 foreach (UIElement button in FieldGrid.Children)
