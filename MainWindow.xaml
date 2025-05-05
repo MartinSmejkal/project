@@ -27,6 +27,7 @@
                 <ColumnDefinition Width="4*" MaxWidth="400"/>
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
+            <Image Name="logoImage" Grid.Column="0" Grid.ColumnSpan="3" MinHeight="100" MinWidth="100"/>
             <Label Grid.Row="1" Grid.Column="0" Content="Size of gameboeard: "  FontSize="14"  Height="30" Width="Auto"/>
             <wpfTool:ByteUpDown Name="size" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  Watermark="Default value '3'" UpdateValueOnEnterKey="True"  HorizontalAlignment="Stretch" Margin="20,0,5,0" VerticalAlignment="Center" Height="30"
                                 Minimum="3" Maximum="15" DefaultValue="3"/>
@@ -34,7 +35,7 @@
             <wpfTool:ByteUpDown Name="condition" Maximum="15" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Watermark="Default value '3'" UpdateValueOnEnterKey="True" HorizontalAlignment="Stretch" Margin="20,0,5,0" VerticalAlignment="Center"  Height="30"
                                 Minimum="3" DefaultValue="3"/>
             <Label Grid.Row="3" Grid.Column="0" Content="Rounds until overwrite: "  FontSize="14"  Height="30" Width="Auto"/>
-            <wpfTool:SByteUpDown Name="timer" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Watermark="Default value -1'" UpdateValueOnEnterKey="True" HorizontalAlignment="Stretch" Margin="20,0,5,0" VerticalAlignment="Center"  Height="30"
+            <wpfTool:SByteUpDown Name="timer" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Watermark="Default value '-1'" UpdateValueOnEnterKey="True" HorizontalAlignment="Stretch" Margin="20,0,5,0" VerticalAlignment="Center"  Height="30"
                                  Minimum="-1" Maximum="112" DefaultValue="-1"/>
             <Label Grid.Row="4" Grid.Column="0" Content="First player name: "  FontSize="14"  Height="30" Width="Auto"/>
             <Button Content="Select from HOF" Grid.Row="4" Grid.Column="2" Click="Player1_Click" HorizontalAlignment="Stretch" Margin="0,0,5,0" VerticalAlignment="Center" Height="30"/>

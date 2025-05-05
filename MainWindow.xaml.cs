@@ -21,6 +21,7 @@ namespace project
     public partial class MainWindow : Window
     {
         private HallOfFame hallOfFame;
+        private BitmapImage logo;
         public Dictionary<string, ushort> TopPlayers
         {
             get { return hallOfFame.GetTopPlayers(); }
@@ -31,9 +32,12 @@ namespace project
             System.Resources.ResourceManager RM = new System.Resources.ResourceManager("YourApplicationNameSpace.Properties.Resources", typeof(Resources).Assembly);
             hallOfFame = new HallOfFame();           
             hallOfFame.LoadGames(HallOfFame.GetResourcesFilePath());
+            logo = new BitmapImage(new Uri("pack://application:,,,/Resources/logo.png"));
             InitializeComponent();
             this.DataContext = this;
             this.IsVisibleChanged += MainWindow_IsVisibleChanged;
+            logoImage.Source = logo;
+            //Icon = logo;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
