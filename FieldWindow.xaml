@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:project"
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800" MinHeight="300" MinWidth="600">
-    <Grid>
+    <Grid  Margin="5,5,5,5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" MaxWidth="200"/>
             <ColumnDefinition Width="2*"/>
@@ -14,23 +14,30 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="FieldGrid" Grid.Column="1" Grid.Row="1">
+        <Grid x:Name="FieldGrid" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3">
         </Grid>
 
         <Grid Grid.Column="0" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Content="Active Player: "  FontSize="16"  Height="33" Width="Auto"/>
-            <Label Grid.Column="1" Content="Player Name: " x:Name="PlayerLabel"  FontSize="16" Height="33" Width="Auto"/>
-            <Label Grid.Column="2" Content="Turn Timer: "  FontSize="16"  Height="33" Width="Auto"/>
-            <Label Grid.Column="3" Content="Turn Timer Count: " x:Name="TurnLabel" FontSize="16"  Height="33" Width="Auto"/>
-            
+            <Label Grid.Column="0" Content="Active Player: "  FontSize="14"  Height="33" Width="Auto"/>
+            <Label Grid.Column="1" Content="Player Name: " x:Name="PlayerLabel" FontWeight="ExtraBlack" FontSize="16" Height="33" Width="Auto"/>
+            <Label Grid.Column="2" Content="Turn Timer: "  FontSize="14"  Height="33" Width="Auto"/>
+            <Label Grid.Column="3" Content="Turn Timer Count: " x:Name="TurnLabel" FontWeight="ExtraBlack" FontSize="16"  Height="33" Width="Auto"/>
         </Grid>
+        <Label Grid.Column="0" Grid.Row="1" Content="Cross Player" FontWeight="Medium"  FontSize="14" Width="Auto" HorizontalAlignment="Right" Margin="5,0,5,0"/>
+        <Label Grid.Column="3" Grid.Row="1" Content="Circle Player" FontWeight="Medium"  FontSize="14" Width="Auto" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+        <Label Name="crossLabel" Grid.Column="0" Grid.Row="2" Content="Cross Player" FontWeight="Bold" FontSize="13" Width="Auto" HorizontalAlignment="Right" Margin="5,0,5,0"/>
+        <Label Name="circleLabel" Grid.Column="3" Grid.Row="2" Content="Circle Player" FontWeight="Bold" FontSize="13" Width="Auto" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+        <Image Name="crossPlayer" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" MaxHeight="110" Margin="0,20,0,0"/>
+        <Image Name="circlePlayer" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" MaxHeight="110" Margin="0,20,0,0"/>
     </Grid>
 </Window>

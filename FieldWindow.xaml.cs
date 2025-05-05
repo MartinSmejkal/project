@@ -33,6 +33,10 @@ namespace project
             Closing += OnWindowClosing;
             circle = new BitmapImage(new Uri("pack://application:,,,/Resources/circle.png"));
             cross = new BitmapImage(new Uri("pack://application:,,,/Resources/cross.png"));
+            crossPlayer.Source = cross;
+            circlePlayer.Source = circle;
+            crossLabel.Content = p1;
+            circleLabel.Content = p2;
 
         }
 
@@ -51,7 +55,6 @@ namespace project
 
                     button.IsEnabled = false;
                 }
-                //TODO show pop-up window with the winner
                 Window main = this.Owner;
                 RematchGameDialog rematch = new RematchGameDialog(field, hallOfFame);
                 bool? result_rem = rematch.ShowDialog();
@@ -59,6 +62,9 @@ namespace project
                 {
                     AdjustRowDefinitions(field.FieldSize);
                     field = new Field(field.PlayerCircle, field.PlayerCross, fieldSize: field.FieldSize, winCondition: field.WinCondition, timerMax: field.TurnLockTimer);
+                    crossLabel.Content = field.PlayerCircle;
+                    circleLabel.Content = field.PlayerCross;
+                    TurnLabel.Content = 0;
                     return;
                 }
                 Closing -= OnWindowClosing;
@@ -98,11 +104,11 @@ namespace project
             for (int i = 0; i < fieldSize; i++)
             {
                 RowDefinition rowDef = new RowDefinition();
-                rowDef.Height = new GridLength(1, GridUnitType.Star); //this sets the height of the row to *
+                rowDef.Height = new GridLength(1, GridUnitType.Star);
                 FieldGrid.RowDefinitions.Add(rowDef);
 
                 ColumnDefinition colDef = new ColumnDefinition();
-                colDef.Width = new GridLength(1, GridUnitType.Star); //this sets the height of the row to *
+                colDef.Width = new GridLength(1, GridUnitType.Star);
                 FieldGrid.ColumnDefinitions.Add(colDef);
             }
 
