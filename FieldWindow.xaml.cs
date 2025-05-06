@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace project
@@ -15,9 +16,18 @@ namespace project
         {
             InitializeComponent();
             AdjustRowDefinitions(fieldSize);
+            Random r = new Random();
+            string tmp;
+            if (r.Next() % 2 == 0)
+            {
+                tmp = p1;
+                p1 = p2;
+                p2 = tmp;
+            }
             field = new Field(p1, p2, fieldSize: fieldSize, winCondition: winCondition, timerMax: timerMax);
             hallOfFame = hof;
             PlayerLabel.Content = p1;
+            PlayerLabel.Foreground = Brushes.Red;
             TurnLabel.Content = 0;
             Closing += OnWindowClosing;
             circle = new BitmapImage(new Uri("pack://application:,,,/Resources/circle.png"));
@@ -34,7 +44,16 @@ namespace project
             int column = Grid.GetColumn(b);
             int row = Grid.GetRow(b);
             b.Content = field.PlayTurn(row, column) == State.cross ? new Image { Source = cross } : new Image { Source = circle };
-            PlayerLabel.Content = field.OnTurn == State.cross ? field.PlayerCross : field.PlayerCircle;
+            if (field.OnTurn == State.cross)
+            {
+                PlayerLabel.Content = field.PlayerCross;
+                PlayerLabel.Foreground = Brushes.Red;
+            }
+            else
+            {
+                PlayerLabel.Content = field.PlayerCircle;
+                PlayerLabel.Foreground = Brushes.Blue;
+            }
             TurnLabel.Content = field.TurnCounter;
             if (field.CheckWin(row, column))
             {
@@ -49,8 +68,10 @@ namespace project
                 {
                     AdjustRowDefinitions(field.FieldSize);
                     field = new Field(field.PlayerCircle, field.PlayerCross, fieldSize: field.FieldSize, winCondition: field.WinCondition, timerMax: field.TurnLockTimer);
-                    crossLabel.Content = field.PlayerCircle;
-                    circleLabel.Content = field.PlayerCross;
+                    crossLabel.Content = field.PlayerCross;
+                    circleLabel.Content = field.PlayerCircle;
+                    PlayerLabel.Content = field.PlayerCross;
+                    PlayerLabel.Foreground = Brushes.Red;
                     TurnLabel.Content = 0;
                     return;
                 }
@@ -76,10 +97,22 @@ namespace project
             }
         }
 
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Return_Click(object sender, RoutedEventArgs e)
+        {
+            Closing -= OnWindowClosing;
+            Window main = this.Owner;
+            this.Close();
+            main.Show();
+        }
+
         public void OnWindowClosing(object sender, CancelEventArgs e)
         {
-            Window main = this.Owner;
-            main.Close();
+            Application.Current.Shutdown();
         }
 
         private void AdjustRowDefinitions(int fieldSize)

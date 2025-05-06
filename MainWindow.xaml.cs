@@ -44,6 +44,10 @@ namespace project
             select.Title = "Second player name selection";
             select.ShowDialog();
         }
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
 
         private void MainWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {

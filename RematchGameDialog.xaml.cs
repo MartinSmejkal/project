@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace project
 {   
@@ -12,6 +13,25 @@ namespace project
             Field = field;
             HallOfFame = hof;
             InitializeComponent();
+            if (field.OnTurn == State.empty)
+            {
+                this.Title = "Draw!";
+                this.Background = Brushes.Gainsboro;
+                info.Content = "There is no winner today,\ngame ended with draw!\nIt took " + field.TurnCounter + " turns.";
+            }
+            else if (field.OnTurn == State.cross) 
+            {
+                this.Title = "Cross wins!";
+                this.Background = Brushes.Tomato;
+                info.Content = "Cross player has won the game,\ncongratulations to " + field.PlayerCross + "!\nIt took him " + field.TurnCounter + " turns.";
+            }
+            else if (field.OnTurn == State.circle)
+            {
+                this.Title = "Circle wins!";
+                this.Background = Brushes.RoyalBlue;
+                info.Content = "Circle player has won the game,\ncongratulations to " + field.PlayerCircle + "!\nIt took him " + field.TurnCounter + " turns.";
+            }
+
         }
 
         private void RematchButton_Click(object sender, RoutedEventArgs e)

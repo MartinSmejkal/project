@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:project"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800" MinHeight="300" MinWidth="600">
-    <Grid  Margin="5,5,5,5">
+        Title="Tic-Tac-Toe Game" Height="450" Width="800" MinHeight="300" MinWidth="600">
+    <Grid>
+        <StackPanel VerticalAlignment="Top">
+            <Menu Width="Auto" Height="20">
+                <MenuItem Header="_Game">
+                    <MenuItem x:Name="AppExit" Header="_Exit" HorizontalAlignment="Left" Width="140" Click="Exit_Click"/>
+                    <MenuItem x:Name="AppReturn" Header="_Return" HorizontalAlignment="Left" Width="140" Click="Return_Click"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+
+        <Grid  Margin="5,5,5,5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" MaxWidth="200"/>
             <ColumnDefinition Width="2*"/>
@@ -28,16 +38,18 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Content="Active Player: "  FontSize="14"  Height="33" Width="Auto"/>
-            <Label Grid.Column="1" Content="Player Name: " x:Name="PlayerLabel" FontWeight="ExtraBlack" FontSize="16" Height="33" Width="Auto"/>
+            <Label Grid.Column="0" Content="Active Player: "  FontSize="14"  Height="33" Width="Auto" HorizontalAlignment="Right"/>
+            <Label Grid.Column="1" Content="Player Name: " x:Name="PlayerLabel" FontWeight="ExtraBlack" FontSize="16" Height="33" Width="Auto" HorizontalAlignment="Center"/>
             <Label Grid.Column="2" Content="Turn Timer: "  FontSize="14"  Height="33" Width="Auto"/>
             <Label Grid.Column="3" Content="Turn Timer Count: " x:Name="TurnLabel" FontWeight="ExtraBlack" FontSize="16"  Height="33" Width="Auto"/>
         </Grid>
-        <Label Grid.Column="0" Grid.Row="1" Content="Cross Player" FontWeight="Medium"  FontSize="14" Width="Auto" HorizontalAlignment="Right" Margin="5,0,5,0"/>
-        <Label Grid.Column="3" Grid.Row="1" Content="Circle Player" FontWeight="Medium"  FontSize="14" Width="Auto" HorizontalAlignment="Left" Margin="5,0,5,0"/>
-        <Label Name="crossLabel" Grid.Column="0" Grid.Row="2" Content="Cross Player" FontWeight="Bold" FontSize="13" Width="Auto" HorizontalAlignment="Right" Margin="5,0,5,0"/>
-        <Label Name="circleLabel" Grid.Column="3" Grid.Row="2" Content="Circle Player" FontWeight="Bold" FontSize="13" Width="Auto" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+        <Label Grid.Column="0" Grid.Row="1" Content="Cross Player" FontWeight="Medium"  FontSize="14" Width="Auto" HorizontalAlignment="Center" Margin="5,0,5,0"/>
+        <Label Grid.Column="3" Grid.Row="1" Content="Circle Player" FontWeight="Medium"  FontSize="14" Width="Auto" HorizontalAlignment="Center" Margin="5,0,5,0"/>
+        <Label Name="crossLabel" Grid.Column="0" Grid.Row="2" Content="Cross Player" FontWeight="Bold" FontSize="13" Width="Auto" HorizontalAlignment="Center" Margin="5,0,5,0"/>
+        <Label Name="circleLabel" Grid.Column="3" Grid.Row="2" Content="Circle Player" FontWeight="Bold" FontSize="13" Width="Auto" HorizontalAlignment="Center" Margin="5,0,5,0"/>
         <Image Name="crossPlayer" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" MaxHeight="110" Margin="0,20,0,0"/>
         <Image Name="circlePlayer" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" MaxHeight="110" Margin="0,20,0,0"/>
+        
+    </Grid>
     </Grid>
 </Window>

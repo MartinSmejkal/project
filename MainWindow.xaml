@@ -6,53 +6,62 @@
         xmlns:local="clr-namespace:project"
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" MinHeight="350" MinWidth="600" MaxWidth="1200">
+        Title="Tic-Tac-Toe Game - Menu" Height="450" Width="800" MinHeight="350" MinWidth="600" MaxWidth="1200">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="3*" MaxWidth="500"/>
-        </Grid.ColumnDefinitions>
+        <StackPanel VerticalAlignment="Top">
+            <Menu Width="Auto" Height="20">
+                <MenuItem Header="_Game">
+                    <MenuItem x:Name="AppExit" Header="_Exit" HorizontalAlignment="Left" Width="140" Click="Exit_Click"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*" MinWidth="155"/>
-                <ColumnDefinition Width="4*" MaxWidth="400"/>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="3*" MaxWidth="500"/>
             </Grid.ColumnDefinitions>
-            <Image Name="logoImage" Grid.Column="0" Grid.ColumnSpan="3" MinHeight="100" MinWidth="100"/>
-            <Label Grid.Row="1" Grid.Column="0" Content="Size of gameboeard: "  FontSize="14"  Height="30" Width="Auto"/>
-            <wpfTool:ByteUpDown Name="size" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  Watermark="Default value '3'" UpdateValueOnEnterKey="False"  HorizontalAlignment="Stretch" Margin="20,0,5,0" VerticalAlignment="Center" Height="30"
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" MinWidth="155"/>
+                    <ColumnDefinition Width="4*" MaxWidth="400"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Image Name="logoImage" Grid.Column="0" Grid.ColumnSpan="3" MinHeight="100" MinWidth="100"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Size of gameboeard: "  FontSize="14"  Height="30" Width="Auto"/>
+                <wpfTool:ByteUpDown Name="size" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  Watermark="Default value '3'" UpdateValueOnEnterKey="False"  HorizontalAlignment="Stretch" Margin="20,0,5,0" VerticalAlignment="Center" Height="30"
                                 Minimum="3" Maximum="15" DefaultValue="3"/>
-            <Label Grid.Row="2" Grid.Column="0" Content="Winning condition: "  FontSize="14"  Height="30" Width="Auto"/>
-            <wpfTool:ByteUpDown Name="condition" Maximum="15" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Watermark="Default value '3'" UpdateValueOnEnterKey="False" HorizontalAlignment="Stretch" Margin="20,0,5,0" VerticalAlignment="Center"  Height="30"
+                <Label Grid.Row="2" Grid.Column="0" Content="Winning condition: "  FontSize="14"  Height="30" Width="Auto"/>
+                <wpfTool:ByteUpDown Name="condition" Maximum="15" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Watermark="Default value '3'" UpdateValueOnEnterKey="False" HorizontalAlignment="Stretch" Margin="20,0,5,0" VerticalAlignment="Center"  Height="30"
                                 Minimum="3" DefaultValue="3"/>
-            <Label Grid.Row="3" Grid.Column="0" Content="Rounds until overwrite: "  FontSize="14"  Height="30" Width="Auto"/>
-            <wpfTool:SByteUpDown Name="timer" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Watermark="Default value '-1'" UpdateValueOnEnterKey="False" HorizontalAlignment="Stretch" Margin="20,0,5,0" VerticalAlignment="Center"  Height="30"
+                <Label Grid.Row="3" Grid.Column="0" Content="Rounds until overwrite: "  FontSize="14"  Height="30" Width="Auto"/>
+                <wpfTool:SByteUpDown Name="timer" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Watermark="Default value '-1'" UpdateValueOnEnterKey="False" HorizontalAlignment="Stretch" Margin="20,0,5,0" VerticalAlignment="Center"  Height="30"
                                  Minimum="-1" Maximum="112" DefaultValue="-1"/>
-            <Label Grid.Row="4" Grid.Column="0" Content="First player name: "  FontSize="14"  Height="30" Width="Auto"/>
-            <Button Content="Select from HOF" Grid.Row="4" Grid.Column="2" Click="Player1_Click" HorizontalAlignment="Stretch" Margin="0,0,5,0" VerticalAlignment="Center" Height="30"/>
-            <TextBox Name="player1" TextChanged="TextBox_TextChanged"  MaxLength="25" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="30" Margin="20,0,0,0" TextWrapping="Wrap"/>
-            <Label Grid.Row="5" Grid.Column="0" Content="Second player name: "  FontSize="14"  Height="30" Width="Auto"/>
-            <Button Content="Select from HOF" Grid.Row="5" Grid.Column="2" Click="Player2_Click" HorizontalAlignment="Stretch" Margin="0,0,5,0" VerticalAlignment="Center" Height="30"/>
-            <TextBox Name="player2" TextChanged="TextBox_TextChanged" MaxLength="25" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="30" Margin="20,0,0,0" TextWrapping="Wrap"/>
-            <Button Name="play" Content="Play" Click="Button_Click" IsEnabled="False" Grid.Row="6" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" MaxWidth="200" Height="30"/>
-        </Grid>
-        <DataGrid Name="HOF" CanUserAddRows="False" CanUserResizeColumns="False" CanUserSortColumns="True" IsReadOnly="True" Grid.Column="1" Margin="5,5,5,5" AutoGenerateColumns="False"
+                <Label Grid.Row="4" Grid.Column="0" Content="First player name: "  FontSize="14"  Height="30" Width="Auto"/>
+                <Button Content="Select from HOF" Grid.Row="4" Grid.Column="2" Click="Player1_Click" HorizontalAlignment="Stretch" Margin="0,0,5,0" VerticalAlignment="Center" Height="30"/>
+                <TextBox Name="player1" TextChanged="TextBox_TextChanged"  MaxLength="25" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="30" Margin="20,0,0,0" TextWrapping="Wrap"/>
+                <Label Grid.Row="5" Grid.Column="0" Content="Second player name: "  FontSize="14"  Height="30" Width="Auto"/>
+                <Button Content="Select from HOF" Grid.Row="5" Grid.Column="2" Click="Player2_Click" HorizontalAlignment="Stretch" Margin="0,0,5,0" VerticalAlignment="Center" Height="30"/>
+                <TextBox Name="player2" TextChanged="TextBox_TextChanged" MaxLength="25" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="30" Margin="20,0,0,0" TextWrapping="Wrap"/>
+                <Button Name="play" Content="Play" Click="Button_Click" IsEnabled="False" Grid.Row="6" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" MaxWidth="200" Height="30"/>
+            </Grid>
+            <DataGrid Name="HOF" CanUserAddRows="False" CanUserResizeColumns="False" CanUserSortColumns="True" IsReadOnly="True" Grid.Column="1" Margin="5,5,5,5" AutoGenerateColumns="False"
                   ScrollViewer.CanContentScroll="True" 
                     ScrollViewer.VerticalScrollBarVisibility="Auto"
                     ScrollViewer.HorizontalScrollBarVisibility="Auto">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Player Name" Binding="{Binding Key}" Width="5*"/>
-                <DataGridTextColumn Header="Games won" Binding="{Binding Value}" Width="2*"/>
-            </DataGrid.Columns>
-        </DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Player Name" Binding="{Binding Key}" Width="5*"/>
+                    <DataGridTextColumn Header="Games won" Binding="{Binding Value}" Width="2*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Window>

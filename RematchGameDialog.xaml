@@ -6,9 +6,8 @@
         xmlns:local="clr-namespace:project"
         mc:Ignorable="d"
         Title="RematchGameDialog"
-
         MinHeight="200"
-        MinWidth="300"
+        MinWidth="450"
         SizeToContent="WidthAndHeight"
         ResizeMode="NoResize"
         ShowInTaskbar="False"
@@ -27,23 +26,19 @@
                 <Setter Property="Margin" Value="5,0,0,0" />
             </Style>
         </Grid.Resources>
-
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
-
-
+        <Label Name="info" Grid.Row="0" Grid.Column="0" FontSize="17" FontWeight="Bold" Content="test" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Width="Auto"/>
         <!-- Accept or Cancel -->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Name="rematchButton" Click="RematchButton_Click"  IsDefault="True">Rematch</Button>
-            <Button Name="returnButton" Click="ReturnButton_Click" IsCancel="True">Return</Button>
-            <Button Name="exportButton" Click="ExportButton_Click">Export</Button>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+            <Button Name="rematchButton" Click="RematchButton_Click"  IsDefault="True" FontSize="17">Rematch</Button>
+            <Button Name="returnButton" Click="ReturnButton_Click" IsCancel="True" FontSize="17">Return</Button>
+            <Button Name="exportButton" Click="ExportButton_Click" FontSize="17">Export</Button>
         </StackPanel>
     </Grid >
 </Window>
