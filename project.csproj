@@ -14,6 +14,7 @@
     <None Remove="Resources\4_pdf.png" />
     <None Remove="Resources\circle.png" />
     <None Remove="Resources\cross.png" />
+    <None Remove="Resources\SavedGames.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +26,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SavedGames.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

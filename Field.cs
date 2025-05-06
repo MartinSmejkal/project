@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace project
+﻿namespace project
 {
     /*
      * Class representing the gameboard,
@@ -14,6 +8,10 @@ namespace project
     public class Field
     {
 #pragma warning disable CS8618 
+        /*
+         * Parameterless constructor set to private to enforce intended behaviour.
+         * Disabled warning that some variables are null after leaving this constructor.
+         */
         private Field() { }
 #pragma warning restore CS8618
 
@@ -33,7 +31,6 @@ namespace project
         {
             if (fieldSize < 3)
             {
-                //throw new ArgumentException("Filed must be atleast of size '3'!");
                 fieldSize = 3;
             }
             if (timerMax > 0)
@@ -52,8 +49,6 @@ namespace project
             PlayerCircle = player2;
             TurnCounter = 0;
             TurnLockTimer = timerMax;
-
-
             FieldSize = fieldSize;
             WinCondition = winCondition;
             if (winCondition > fieldSize)
@@ -62,6 +57,7 @@ namespace project
             }
             OnTurn = State.cross;
         }
+
         /*
          * Box [,] array with dimensions (FieldSize x FieldSize)
          */
@@ -77,7 +73,6 @@ namespace project
          */
         public string PlayerCircle { get; private set; }
 
-
         /*
          * State enum containing the information, who is going to play the next turn.
          */
@@ -87,15 +82,18 @@ namespace project
          * Number of played turns.
          */
         public ushort TurnCounter { get; set; }
+
         /*
          * Number of neigbouring Boxes needed to win a game,
          * can`t have higher value than FieldSize.
          */
         public byte WinCondition { get; private set; }
+
         /*
          * Size of the game field, minimum is 3.
          */
         public byte FieldSize { get; private set; }
+
         /*
          * Number of turns the Box.LockTimer will be set.
          * TurnTimerMax '-1' means overwriting the Box owner is disabled,
@@ -109,7 +107,7 @@ namespace project
          * params row & column are forwarded to them,
          * return true if any of them find that WinCondition was met,
          * if so calls SwitchOnTurn(),
-         * follows CheckDraw().
+         * otherwise follows CheckDraw().
          */
         public bool CheckWin(int row, int column)
         {
@@ -118,19 +116,16 @@ namespace project
                 SwitchOnTurn();
                 return true;
             }
-
             if (CheckTopRightToBottomLeft(row, column))
             {
                 SwitchOnTurn();
                 return true;
             }
-
             if (CheckTopToBottom(row, column))
             {
                 SwitchOnTurn();
                 return true;
             }
-
             if (CheckLeftToRight(row, column))
             {
                 SwitchOnTurn();
@@ -167,7 +162,6 @@ namespace project
         private bool CheckTopLeftToBottomRight(int row, int column)
         {
             int current = 1;
-
             if (row != 0 && column != 0)
             {
                 while (GameField[row, column].Owner == GameField[row - 1, column - 1].Owner)
@@ -210,7 +204,6 @@ namespace project
         private bool CheckTopRightToBottomLeft(int row, int column)
         {
             int current = 1;
-
             if (row != 0 && column != FieldSize - 1)
             {
                 while (GameField[row, column].Owner == GameField[row - 1, column + 1].Owner)
@@ -253,7 +246,6 @@ namespace project
         private bool CheckTopToBottom(int row, int column)
         {
             int current = 1;
-
             if (row != 0)
             {
                 while (GameField[row, column].Owner == GameField[row - 1, column].Owner)
@@ -294,7 +286,6 @@ namespace project
         private bool CheckLeftToRight(int row, int column)
         {
             int current = 1;
-
             if (column != 0)
             {
                 while (GameField[row, column].Owner == GameField[row, column - 1].Owner)
@@ -330,7 +321,7 @@ namespace project
          * if overwriting is enabled (any form) returns false,
          * if overwritng of Box owner is disabled and all Boxes have
          * their owners set -> returns true, ohterwise returns false,
-         * if game is found to be draw, OnTurn is set to Statee.empty.
+         * if game is found to be draw, OnTurn is set to State.empty.
          */
         private bool CheckDraw()
         {
@@ -354,6 +345,7 @@ namespace project
                 return false;
             }
         }
+
         /*
          * Method that serves the game logic,
          * increments TurnCounter, calls DecrementLocks() and calls SetOwner() for player OnTurn
@@ -379,12 +371,10 @@ namespace project
                 GameField[row, column].SetOwner(State.circle);
                 s = State.circle;
                 OnTurn = State.cross;
-            }       
+            }
             TurnCounter++;
             DecrementLocks();
             return s;
-
-
         }
 
         /*
@@ -430,7 +420,6 @@ namespace project
                     {
                         playable[rows, columns] = false;
                     }
-
                 }
             }
             return playable;

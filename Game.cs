@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace project
+﻿namespace project
 {
     /*
      * Class storing the results of played games (exported from class Field),
@@ -21,15 +15,15 @@ namespace project
             WinCondition = winCondition;
             FieldSize = fieldsize;
         }
+
+        /*
+         * Public parameterless constructor required for serialization.
+         */
         public Game() { }
         public string PlayerCross { get;  set; }
-
         public string PlayerCircle { get;  set; }
-
         public State Winner { get;  set; }
-
         public ushort TurnCounter { get;  set; }
-
         public byte WinCondition { get;  set; }
         public byte FieldSize { get;  set; }
     }

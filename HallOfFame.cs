@@ -1,11 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Windows.Controls.Primitives;
+﻿using System.IO;
 
 namespace project
 {
@@ -21,6 +14,9 @@ namespace project
             games = new List<Game>();
         }
 
+        /*
+         * Private datastructure to store loaded Game(s).
+         */
         private List<Game> games;
 
         /*
@@ -73,12 +69,22 @@ namespace project
             games.Add(game);
         }
 
+        /*
+         * Method returning file path as a string to the SavedGames.txt located in /Resources.
+         */
         public static string GetResourcesFilePath()
         {
             string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
-            string FileName = string.Format("{0}Resources\\SavedGames.txt", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\..\")));
+            string FileName = string.Format("{0}Resources\\SavedGames.txt", Path.GetFullPath(Path.Combine(RunningPath, @"")));
             return FileName;
         }
+
+        /*
+         * Method which tries to load saved games from XML file,
+         * requires path to the file as a string,
+         * uses XmlSerialization, see more in its class,
+         * if any errors occur during import, sets games to empty List<Same>
+         */
         public void LoadGames(string filepath)
         {
             if (File.Exists(filepath))
@@ -87,7 +93,7 @@ namespace project
                 {
                     games = XmlSerialization.ReadFromXmlFile<List<Game>>(filepath);
                 }
-                catch (InvalidOperationException e)
+                catch (InvalidOperationException)
                 {
                     games = new List<Game>();
                     //corrupted file
@@ -98,12 +104,15 @@ namespace project
                 games = new List<Game>();
             }
         }
+
+        /*
+         * Method that stores loaded games to XML file in given file path,
+         * uses XmlSerialization,
+         * if file does`t exist, creates new one.
+         */
         public void SaveGames(string filepath)
         {
             XmlSerialization.WriteToXmlFile<List<Game>>(filepath, games);
         }
-
-
-
     }
 }

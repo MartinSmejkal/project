@@ -1,21 +1,10 @@
 ﻿using System.ComponentModel;
-using System.Security.Cryptography.Pkcs;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace project
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class FieldWindow : Window
     {
         private Field field;
@@ -37,7 +26,6 @@ namespace project
             circlePlayer.Source = circle;
             crossLabel.Content = p1;
             circleLabel.Content = p2;
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -52,7 +40,6 @@ namespace project
             {
                 foreach (UIElement button in FieldGrid.Children)
                 {
-
                     button.IsEnabled = false;
                 }
                 Window main = this.Owner;
@@ -87,8 +74,6 @@ namespace project
                     }
                 }
             }
-
-
         }
 
         public void OnWindowClosing(object sender, CancelEventArgs e)
@@ -119,7 +104,6 @@ namespace project
                 {
                     Button b = new Button();
                     b.Click += Button_Click;
-
                     FieldGrid.Children.Add(b);
                     Grid.SetColumn(b, columns);
                     Grid.SetRow(b, rows);
@@ -127,6 +111,4 @@ namespace project
             }
         }
     }
-
-
 }

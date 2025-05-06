@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace project
+﻿namespace project
 {
     /*
     * Class representing single tile/Box on the board/Field,
@@ -28,8 +22,10 @@ namespace project
             LockTimer = 0;
         }
 
+        /*
+         * Parameterless constructor set to private to enforce intended behaviour.
+         */
         private Box() { }
-
 
         public State Owner { get; private set; }
 
@@ -85,9 +81,6 @@ namespace project
         private void ResetTimer()
         {
             LockTimer = timerMAX;
-
         }
-
-
     }
 }

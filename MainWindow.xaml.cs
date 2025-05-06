@@ -1,23 +1,9 @@
-﻿using System.Collections.ObjectModel;
-using System.Reflection;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-
 
 namespace project
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private HallOfFame hallOfFame;
@@ -29,7 +15,6 @@ namespace project
 
         public MainWindow()
         {
-            System.Resources.ResourceManager RM = new System.Resources.ResourceManager("YourApplicationNameSpace.Properties.Resources", typeof(Resources).Assembly);
             hallOfFame = new HallOfFame();           
             hallOfFame.LoadGames(HallOfFame.GetResourcesFilePath());
             logo = new BitmapImage(new Uri("pack://application:,,,/Resources/logo.png"));
@@ -37,7 +22,6 @@ namespace project
             this.DataContext = this;
             this.IsVisibleChanged += MainWindow_IsVisibleChanged;
             logoImage.Source = logo;
-            //Icon = logo;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -84,7 +68,6 @@ namespace project
         private void RefreshData()
         {
             HOF.ItemsSource = null;
-            var x = TopPlayers.ToList();
             HOF.ItemsSource = TopPlayers.ToList();
             HOF.Items.Refresh();
         }
